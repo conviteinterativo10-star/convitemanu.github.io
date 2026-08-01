@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus 15 Anos - Manu</title>
+    <!-- Adicionando fontes elegantes do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS para estruturação -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #06010d; /* Fundo escuro combinando com as bordas do convite */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .convite-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Tamanho máximo do convite para telas grandes */
+            box-shadow: 0 0 30px rgba(107, 33, 168, 0.4); /* Sombra roxa ao redor da imagem */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* A imagem do convite em si */
+        .convite-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* 
+         * STREAMING_CHUNK: Estilos da nova Tela de Entrada Elegante
+         */
+        .fonte-classica {
+            font-family: 'Cinzel', serif;
+        }
+        
+        .fonte-cursiva {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Efeito de brilho pulsante no texto "Manu" */
+        .glow-text {
+            text-shadow: 0 0 10px #b55ceb, 0 0 20px #8a2be2, 0 0 40px #4b0082;
+        }
+
+        /* Partículas de brilho ao fundo (estrelinhas) */
+        .particula {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0;
+            animation: brilhar 3s infinite ease-in-out;
+        }
+        
+        @keyframes brilhar {
+            0%, 100% { opacity: 0; transform: scale(0.5); box-shadow: 0 0 2px #fff; }
+            50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 8px #b55ceb, 0 0 15px #b55ceb; }
+        }
+
+        /* Moldura elegante da tela de entrada inspirada na imagem */
+        .moldura-elegante {
+            background: linear-gradient(135deg, rgba(30, 5, 58, 0.9) 0%, rgba(10, 0, 20, 0.95) 100%);
+            box-shadow: 
+                0 0 30px rgba(107, 33, 168, 0.4),
+                inset 0 0 20px rgba(181, 92, 235, 0.1);
+        }
+
+        /* 
+         * STREAMING_CHUNK: Retornando as áreas para 100% invisíveis
+         */
+        .area-clicavel {
+            position: absolute;
+            display: block;
+            z-index: 10;
+            text-decoration: none;
+            /* Sem fundos ou bordas para não interferir na sua nova imagem */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="telaEntrada" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#070112] transition-opacity duration-1000 overflow-hidden">
+        
+        <!-- Fundo com gradiente e névoa roxa simulada (inspirado nas fitas de luz da imagem) -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#4b0082] rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-pulse"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#8a2be2] rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
+        </div>
+
+        <!-- Container para as partículas de estrela geradas via JS -->
+        <div id="estrelasContainer" class="absolute inset-0 z-10 pointer-events-none"></div>
+
+        <!-- Conteúdo Principal na Moldura -->
+        <div class="moldura-elegante relative z-20 flex flex-col items-center justify-center p-10 m-6 rounded-2xl max-w-sm w-full border border-[#b55ceb]/30">
+            
+            <!-- Detalhe decorativo superior (simulando brilho/estrela) -->
+            <div class="text-[#d4af37] opacity-80 mb-6 flex items-center gap-3">
+                <span class="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]"></span>
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7.4-6.3-4.8-6.3 4.8 2.3-7.4-6-4.6h7.6z"/></svg>
+                <span class="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]"></span>
+            </div>
+
+            <!-- Textos de Boas Vindas -->
+            <h1 class="text-[#e0e0e0] fonte-classica text-xs md:text-sm uppercase tracking-[0.2em] mb-6 text-center leading-relaxed">
+                Você é meu convidado <br>especial para celebrar os
+            </h1>
+            
+            <div class="text-center mb-6">
+                <p class="text-[#a87ab8] fonte-classica text-[10px] uppercase tracking-[0.4em] mb-[-10px]">Meus 15 anos</p>
+                <h2 class="text-6xl md:text-7xl text-[#f4d9ff] fonte-cursiva glow-text mt-4 mb-2">
+                    Manu
+                </h2>
+            </div>
+
+            <!-- Detalhe decorativo inferior (coração) -->
+            <div class="text-[#b55ceb] opacity-80 mb-10 mt-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            </div>
+
+            <!-- Botão redesenhado (Estilo Glassmorphism com borda fina) -->
+            <button id="btnAbrirConvite" class="group relative px-10 py-3 rounded-full bg-[#1a0533]/80 border border-[#b55ceb]/60 text-[#e0e0e0] fonte-classica text-xs tracking-[0.15em] uppercase transition-all duration-500 overflow-hidden shadow-[0_0_15px_rgba(107,33,168,0.5)] hover:shadow-[0_0_25px_rgba(181,92,235,0.9)] hover:border-[#f4d9ff] hover:text-white backdrop-blur-sm">
+                <span class="relative z-10 flex items-center gap-2">
+                    Abrir Convite
+                </span>
+                <div class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-[#b55ceb]/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+            </button>
+        </div>
+    </div>
+
+    <div class="convite-container">
+        <!-- 
+            IMPORTANTE: 
+            O nome do arquivo aqui deve ser EXATAMENTE o nome da imagem que você tem salva no seu computador.
+            Coloquei o nome do arquivo que você enviou, mas adicionei um link de "fallback" (onerror)
+            para que você consiga visualizar algo na pré-visualização.
+        -->
+        <img 
+            src="FOTO.png" 
+            onerror="this.src='https://placehold.co/800x1200/1a0b2e/b55ceb?text=Por+favor,+salve+este+arquivo+HTML+na%5Cnmesma+pasta+da+sua+imagem%5Cn(Gemini_Generated_Image_2ccbqy2ccbqy2ccb.png)'"
+            alt="Convite 15 Anos Manu" 
+            class="convite-img"
+        >
+
+        <!-- 
+            MÚSICA DE FUNDO: 
+            Para adicionar a sua música manualmente, coloque o arquivo MP3 
+            na mesma pasta deste arquivo HTML e mude o nome dele 
+            para "sua_musica.mp3", ou altere o nome "sua_musica.mp3" abaixo
+            para o nome exato do seu arquivo.
+        -->
+        <audio id="musicaFundo" loop>
+            <source src="musica.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Botão de Música Elegante no Canto Direito -->
+        <button id="btnMusica" class="absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-sm p-3 rounded-full border border-purple-500/50 text-white shadow-[0_0_10px_rgba(107,33,168,0.5)] flex items-center justify-center transition-transform hover:scale-105" title="Tocar/Pausar Música">
+            <!-- Ícone de Play -->
+            <svg id="iconePlay" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <!-- Ícone de Pause (inicia escondido) -->
+            <svg id="iconePause" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+
+        <!-- 
+            ÁREA CLICÁVEL DO LOCAL (Google Maps)
+            Ajustada para cobrir o primeiro quadro da nova imagem
+        -->
+        <a 
+            href="https://maps.google.com/?q=R.+Jos%C3%A9+Carlos+Colodel,+108+-+Vila+Santa+Terezinha,+Alm.+Tamandar%C3%A9+-+PR,+83501-140,+Brasil&ftid=0x94dcde68d48bb617:0x525c5e3570b0f3c2" 
+            target="_blank" 
+            class="area-clicavel"
+            style="top: 77%; left: 19%; width: 50%; height: 11%;"
+            title="Abrir localização no Mapa"
+        ></a>
+
+        <!-- 
+            ÁREA CLICÁVEL DO WHATSAPP (Confirmar Presença)
+            Ajustada para o novo número e para cobrir o segundo quadro
+        -->
+        <a 
+            href="https://wa.me/554197311255?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20nos%2015%20anos%20da%20Manu." 
+            target="_blank" 
+            class="area-clicavel"
+            style="top: 89.5%; left: 19%; width: 50%; height: 6.5%;"
+            title="Confirmar presença pelo WhatsApp"
+        ></a>
+    </div>
+
+    <script>
+        /* 
+           INSTRUÇÕES FINAIS PARA FUNCIONAR NO SEU COMPUTADOR/HOSPEDAGEM:
+           1. Salve este código como "index.html".
+           2. Pegue a nova imagem e renomeie-a para: "Gemini_Generated_Image_2ccbqy2ccbqy2ccb.png" (ou altere o nome no código)
+           3. Coloque ambos os arquivos (index.html e a imagem) na mesma pasta.
+           4. Adicione um arquivo de música com o nome "sua_musica.mp3" na mesma pasta.
+           5. Abra o arquivo index.html no navegador. O convite aparecerá perfeito e interativo!
+        */
+
+        const audio = document.getElementById('musicaFundo');
+        const btnMusica = document.getElementById('btnMusica');
+        const iconePlay = document.getElementById('iconePlay');
+        const iconePause = document.getElementById('iconePause');
+        
+        // Elementos da Tela de Entrada
+        const telaEntrada = document.getElementById('telaEntrada');
+        const btnAbrirConvite = document.getElementById('btnAbrirConvite');
+        
+        const estrelasContainer = document.getElementById('estrelasContainer');
+        for (let i = 0; i < 50; i++) {
+            let estrela = document.createElement('div');
+            estrela.classList.add('particula');
+            
+            // Posição aleatória na tela
+            estrela.style.left = Math.random() * 100 + '%';
+            estrela.style.top = Math.random() * 100 + '%';
+            
+            // Tamanho aleatório (simulando estrelas distantes e próximas)
+            let tamanho = Math.random() * 3 + 1;
+            estrela.style.width = tamanho + 'px';
+            estrela.style.height = tamanho + 'px';
+            
+            // Atraso e duração da animação para efeito cintilante orgânico
+            estrela.style.animationDelay = Math.random() * 4 + 's';
+            estrela.style.animationDuration = Math.random() * 3 + 2 + 's';
+            
+            estrelasContainer.appendChild(estrela);
+        }
+
+        let tocando = false;
+
+        // Evento para abrir o convite e tocar a música
+        btnAbrirConvite.addEventListener('click', () => {
+            // Tenta tocar a música (agora o navegador permite pois houve clique)
+            audio.play().then(() => {
+                tocando = true;
+                iconePlay.classList.add('hidden');
+                iconePause.classList.remove('hidden');
+            }).catch(e => console.log("Áudio bloqueado ou não encontrado:", e));
+
+            // Efeito de sumir a tela de entrada suavemente
+            telaEntrada.classList.add('opacity-0');
+            
+            // Remove a tela do código após a transição (1 segundo) para não atrapalhar os cliques
+            setTimeout(() => {
+                telaEntrada.style.display = 'none';
+            }, 1000);
+        });
+
+        btnMusica.addEventListener('click', () => {
+            if (tocando) {
+                audio.pause();
+                iconePlay.classList.remove('hidden');
+                iconePause.classList.add('hidden');
+            } else {
+                audio.play();
+                iconePlay.classList.add('hidden');
+                iconePause.classList.remove('hidden');
+            }
+            tocando = !tocando;
+        });
+    </script>
+</body>
+</html>
